@@ -35,7 +35,7 @@ public async Task Run(
     // Since the orchestrator code is being replayed many times
     // don't depend on non-deterministic behavior or blocking calls such as:
     // - DateTime.Now (use context.CurrentUtcDateTime instead)
-    // - Guid.NewGuid
+    // - Guid.NewGuid (use context.NewGuid instead)
     // - System.IO
     // - Thread.Sleep/Task.Delay (use context.CreateTimer instead)
     //
