@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Durable Functions Client/Starter</Title>
+      <Shortcut>funccl</Shortcut>
+      <Description>Code snippet to create an orchestration client function method.</Description>
+      <Author>Marc Duiker</Author>
+    </Header>
+    <Snippet>
+      <Imports>
+        <Import>
+          <Namespace>System.Threading.Tasks</Namespace>
+        </Import>
+        <Import>
+          <Namespace>Microsoft.Azure.WebJobs</Namespace>
+        </Import>
+        <Import>
+          <Namespace>Microsoft.Extensions.Logging</Namespace>
+        </Import>
+      </Imports>
+      <Declarations>
+        <Literal>
+          <ID>OrchestrationClientClassName</ID>
+          <ToolTip>Name of the class the client method is in.</ToolTip>
+          <Default>OrchestrationClientClassName</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="CSharp"><![CDATA[[FunctionName(nameof($OrchestrationClientClassName$))]
+      public async Task Run(
+          // TODO specify the Azure Functions trigger and arguments,
+          [OrchestrationClient] DurableOrchestrationClientBase client,
+          ILogger logger)
+      {
+          $end$
+          // TODO
+          // var input = ;
+          // string instanceId = await client.StartNewAsync(
+          //    nameof(OrchestrationClassName), 
+          //    input);
+      }]]></Code>
+      </Snippet>
+    </CodeSnippet>
+
+    <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Durable Functions Orchestrator</Title>
+      <Shortcut>funcor</Shortcut>
+      <Description>Code snippet to create an orchestrator function method.</Description>
+      <Author>Marc Duiker</Author>
+    </Header>
+    <Snippet>
+      <Imports>
+        <Import>
+          <Namespace>System.Threading.Tasks</Namespace>
+        </Import>
+        <Import>
+          <Namespace>Microsoft.Azure.WebJobs</Namespace>
+        </Import>
+        <Import>
+          <Namespace>Microsoft.Extensions.Logging</Namespace>
+        </Import>
+      </Imports>
+      <Declarations>
+        <Literal>
+          <ID>OrchestratorClassName</ID>
+          <ToolTip>Name of the class the orchestrator method is in.</ToolTip>
+          <Default>OrchestratorClassName</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="CSharp"><![CDATA[[FunctionName(nameof($OrchestratorClassName$))]
+      public async Task Run(
+          [OrchestrationTrigger] DurableOrchestrationContextBase context,
+          ILogger logger)
+      {
+          $end$
+          // Since the orchestrator code is being replayed many times
+          // don't depend on non-deterministic behavior or blocking calls such as:
+          // - DateTime.Now (use context.CurrentUtcDateTime instead)
+          // - Guid.NewGuid
+          // - System.IO
+          // - Thread.Sleep/Task.Delay (use context.CreateTimer instead)
+          //
+          // More info: https://docs.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-checkpointing-and-replay#orchestrator-code-constraints
+
+          // TODO
+          // var input = context.GetInput<T>();
+          // var activityResult = await context.CallActivityAsync<string>(
+          //    nameof(ActivityClassName),
+          //    input));
+      }]]></Code>
+      </Snippet>
+    </CodeSnippet>
+
+    <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Durable Functions Activity</Title>
+      <Shortcut>funcac</Shortcut>
+      <Description>Code snippet to create an activity function method.</Description>
+      <Author>Marc Duiker</Author>
+    </Header>
+    <Snippet>
+      <Imports>
+        <Import>
+          <Namespace>System.Threading.Tasks</Namespace>
+        </Import>
+        <Import>
+          <Namespace>Microsoft.Azure.WebJobs</Namespace>
+        </Import>
+        <Import>
+          <Namespace>Microsoft.Extensions.Logging</Namespace>
+        </Import>
+      </Imports>
+      <Declarations>
+        <Literal>
+          <ID>ActivityClassName</ID>
+          <ToolTip>Name of the class the activity method is in.</ToolTip>
+          <Default>ActivityClassName</Default>
+        </Literal>
+        <Literal>
+          <ID>OutputType</ID>
+          <ToolTip>Type of the object that is returned from the activity.</ToolTip>
+          <Default>OutputType</Default>
+        </Literal>
+        <Literal>
+          <ID>InputType</ID>
+          <ToolTip>Type of the object that is passed into the activity.</ToolTip>
+          <Default>InputType</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="CSharp"><![CDATA[[FunctionName(nameof($ActivityClassName$))]
+      public Task<$OutputType$> Run(
+          [ActivityTrigger] $InputType$ input,
+          ILogger logger)
+      {
+          $end$
+      }]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
