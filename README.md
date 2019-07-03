@@ -11,13 +11,14 @@ public async Task Run(
     // TODO specify the Azure Functions trigger and arguments,
     [OrchestrationClient] DurableOrchestrationClientBase client,
     ILogger logger)
-    {
-        // TODO
-        // var input = ;
-        // string instanceId = await client.StartNewAsync(
-        //    nameof(OrchestrationClassName), 
-        //    input);
-    }
+{
+
+    // TODO
+    // var input = ;
+    // string instanceId = await client.StartNewAsync(
+    //    nameof(OrchestrationClassName), 
+    //    input);
+}
 ```
 
 ## Create orchestrator function
@@ -32,9 +33,13 @@ public async Task Run(
 {
 
     // Since the orchestrator code is being replayed many times
-    // don't depend on non-deterministic behavior such as:
+    // don't depend on non-deterministic behavior or blocking calls such as:
     // - DateTime.Now (use context.CurrentUtcDateTime instead)
-    // - Guid.NewGuid()
+    // - Guid.NewGuid
+    // - System.IO
+    // - Thread.Sleep/Task.Delay (use context.CreateTimer instead)
+    //
+    // More info: https://docs.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-checkpointing-and-replay#orchestrator-code-constraints
 
     // TODO
     // var input = context.GetInput<T>();
@@ -48,7 +53,6 @@ public async Task Run(
 
 Type `funcac[TAB][TAB]` inside a new class and it results in:
 
-
 ```
 [FunctionName(nameof(ActivityClassName))]
 public Task<OutputType> Run(
@@ -56,6 +60,7 @@ public Task<OutputType> Run(
     ILogger logger)
 {
 
+    // TODO
 }
 ```
 
