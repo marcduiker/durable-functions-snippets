@@ -1,5 +1,5 @@
 # Durable Functions Snippets
-Visual Studio C# code snippets for Durable Functions:
+Visual Studio & Rider C# code snippets for Durable Functions:
 
 ##  Create orchestration client function - `funccl`
 
@@ -64,11 +64,17 @@ public async Task<OutputType> Run(
 }
 ```
 
-## How to install
+# How to install
 
-Download the [snippet file](/visualstudio-csharp/durablefunctions.snippet) locally and import it in Visual Studio by following these instructions:
-https://docs.microsoft.com/en-us/visualstudio/ide/walkthrough-creating-a-code-snippet?view=vs-2019#import-a-code-snippet
+## Microsoft Visual Studio
 
+Download the [snippet file](/visualstudio-csharp/durablefunctions.snippet) locally and import it in Visual Studio by following [these instructions](https://docs.microsoft.com/en-us/visualstudio/ide/walkthrough-creating-a-code-snippet?view=vs-2019#import-a-code-snippet).
+
+## Jetbrains Rider
+
+Download the [DotSettings file](/rider-csharp/durablefunctions-live-templates.DotSettings) locally and import it in Rider by following [these instructions](https://www.jetbrains.com/help/rider/Sharing_Configuration_Options.html#import_settings).
+
+## Dependencies
 It works best if you are working in a Function App project with a reference to the DurableTask nuget package. So these references should be available: 
 - Microsft.Azure.WebJobs.Extensions.DurableTask
 - Microsft.Azure.WebJobs.Extensions.Storage (only if you plan to use the default QueueTrigger in the orchestration client snippet).
