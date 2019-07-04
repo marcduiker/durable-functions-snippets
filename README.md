@@ -1,7 +1,7 @@
 # Durable Functions Snippets
 Visual Studio C# code snippets for Durable Functions:
 
-## Create orchestration client function
+##  Create orchestration client function - `funccl`
 
 Type `funccl[TAB][TAB]` inside a new class and it results in:
 
@@ -21,7 +21,7 @@ public async Task Run(
 }
 ```
 
-## Create orchestrator function
+## Create orchestrator function - `funcor`
 
 Type `funcor[TAB][TAB]` inside a new class and it results in:
 
@@ -49,7 +49,7 @@ public async Task Run(
 }
 ```
 
-## Create activity function
+## Create activity function - `funcac`
 
 Type `funcac[TAB][TAB]` inside a new class and it results in:
 
@@ -66,5 +66,5 @@ public Task<OutputType> Run(
 
 ## How to install
 
-Download the [snippet file](/csharp/durablefunctions.snippet) locally and import it in Visual Studio by following these instructions:
+Download the [snippet file](/visualstudio-csharp/durablefunctions.snippet) locally and import it in Visual Studio by following these instructions:
 https://docs.microsoft.com/en-us/visualstudio/ide/walkthrough-creating-a-code-snippet?view=vs-2019#import-a-code-snippet
