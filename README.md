@@ -55,7 +55,7 @@ Type `funcac[TAB][TAB]` inside a new class and it results in:
 
 ```
 [FunctionName(nameof(ActivityClassName))]
-public Task<OutputType> Run(
+public async Task<OutputType> Run(
     [ActivityTrigger] InputType input,
     ILogger logger)
 {
@@ -68,3 +68,8 @@ public Task<OutputType> Run(
 
 Download the [snippet file](/visualstudio-csharp/durablefunctions.snippet) locally and import it in Visual Studio by following these instructions:
 https://docs.microsoft.com/en-us/visualstudio/ide/walkthrough-creating-a-code-snippet?view=vs-2019#import-a-code-snippet
+
+It works best if you are working in a Function App project with a reference to the DurableTask nuget package. So these references should be available: 
+- Microsft.Azure.WebJobs.Extensions.DurableTask
+- Microsft.Azure.WebJobs.Extensions.Storage (only if you plan to use the default QueueTrigger in the orchestration client snippet).
+- Microsoft.NET.Sdk.Functions
