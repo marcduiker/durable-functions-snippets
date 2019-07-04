@@ -8,7 +8,7 @@ Type `funccl[TAB][TAB]` inside a new class and it results in:
 ```
 [FunctionName(nameof(OrchestrationClientClassName))]
 public async Task Run(
-    // TODO specify the Azure Functions trigger and arguments,
+    [QueueTrigger("queuename", Connection = "QueueStorageConnection")] object message,
     [OrchestrationClient] DurableOrchestrationClientBase client,
     ILogger logger)
 {

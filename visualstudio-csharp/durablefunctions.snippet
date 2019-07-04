@@ -28,10 +28,15 @@
           <ToolTip>Name of the class the client method is in.</ToolTip>
           <Default>OrchestrationClientClassName</Default>
         </Literal>
+        <Literal>
+          <ID>Trigger</ID>
+          <ToolTip>Trigger attribute and arguments which start this function.</ToolTip>
+          <Default>[QueueTrigger("queuename", Connection = "QueueStorageConnection")] object message</Default>
+        </Literal>
       </Declarations>
       <Code Language="CSharp"><![CDATA[[FunctionName(nameof($OrchestrationClientClassName$))]
       public async Task Run(
-          // TODO specify the Azure Functions trigger and arguments,
+          $Trigger$,
           [OrchestrationClient] DurableOrchestrationClientBase client,
           ILogger logger)
       {
