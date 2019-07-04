@@ -30,7 +30,7 @@
         </Literal>
         <Literal>
           <ID>Trigger</ID>
-          <ToolTip>Trigger attribute and arguments which start this function.</ToolTip>
+          <ToolTip>Trigger attribute and arguments which start this function. This will require an additional Microsoft.Azure.WebJobs.Extensions.* NuGet package specific for this trigger.</ToolTip>
           <Default>[QueueTrigger("queuename", Connection = "QueueStorageConnection")] object message</Default>
         </Literal>
       </Declarations>
@@ -143,7 +143,7 @@
         </Literal>
       </Declarations>
       <Code Language="CSharp"><![CDATA[[FunctionName(nameof($ActivityClassName$))]
-      public Task<$OutputType$> Run(
+      public async Task<$OutputType$> Run(
           [ActivityTrigger] $InputType$ input,
           ILogger logger)
       {
