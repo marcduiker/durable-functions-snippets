@@ -1,0 +1,62 @@
+{
+	"Durable Functions orchestration client function": {
+		"prefix": "funccl",
+		"body": [
+			"[FunctionName(nameof(${1:OrchestrationClientClassName}))]",
+			"public async Task Run(",
+			"\t${2:Trigger},",
+			"\t[OrchestrationClient] DurableOrchestrationClientBase client,",
+			"\tILogger logger)",
+			"{",
+			"\t$0",
+			"\t// TODO",
+			"\t// var input = ;",
+			"\t// string instanceId = await client.StartNewAsync(",
+			"\t//    nameof(OrchestrationClassName),",
+			"\t//    input);",
+			"}"
+		],
+		"description": "Create an orchestration client function method"
+	},
+	"Durable Functions orchestrator function": {
+		"prefix": "funcor",
+		"body": [
+			"[FunctionName(nameof(${1:OrchestratorClassName}))]",
+			"public async Task Run(",
+			"\t[OrchestrationTrigger] DurableOrchestrationContextBase context,",
+			"\tILogger logger)",
+			"{",
+			"\t$0",
+			"\t// Since the orchestrator code is being replayed many times",
+			"\t// don't depend on non-deterministic behavior or blocking calls such as:",
+			"\t// - DateTime.Now (use context.CurrentUtcDateTime instead)",
+			"\t// - Guid.NewGuid (use context.NewGuid instead)",
+			"\t// - System.IO",
+			"\t// - Thread.Sleep/Task.Delay (use context.CreateTimer instead)",
+			"\t//",
+			"\t// More info: https://docs.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-checkpointing-and-replay#orchestrator-code-constraints",
+
+			"\t// TODO",
+			"\t// var input = context.GetInput<T>();",
+			"\t// var activityResult = await context.CallActivityAsync<string>(",
+			"\t//    nameof(ActivityClassName),",
+			"\t//    input));",
+			"}"
+		],
+		"description": "Creates an orchestrator function method"
+	},
+	"Durable Functions activity function": {
+		"prefix": "funcac",
+		"body": [
+			"[FunctionName(nameof(${1:ActivityClassName}))]",
+			"public async Task<${2:OutputType}> Run(",
+			"\t[ActivityTrigger] ${3:InputType} input,",
+			"\tILogger logger)",
+			"{",
+			"\t$0",
+			"\t// TODO",
+			"}",
+		],
+		"description": "Create an activity function method"
+	}
+}

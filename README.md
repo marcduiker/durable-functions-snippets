@@ -1,9 +1,9 @@
 # Durable Functions Snippets
-Visual Studio & Rider C# code snippets for Durable Functions:
+Visual Studio, Code & Rider C# code snippets for Durable Functions:
 
 ##  Create orchestration client function - `funccl`
 
-Type `funccl[TAB][TAB]` inside a new class and it results in:
+Type `funccl` inside a new class followed by one or two `[TAB]`s depending on your IDE and it results in:
 
 ```
 [FunctionName(nameof(OrchestrationClientClassName))]
@@ -23,7 +23,7 @@ public async Task Run(
 
 ## Create orchestrator function - `funcor`
 
-Type `funcor[TAB][TAB]` inside a new class and it results in:
+Type `funcor` inside a new class followed by one or two `[TAB]`s depending on your IDE and it results in:
 
 ```
 [FunctionName(nameof(OrchestratorClassName))]
@@ -51,7 +51,7 @@ public async Task Run(
 
 ## Create activity function - `funcac`
 
-Type `funcac[TAB][TAB]` inside a new class and it results in:
+Type `funcac` inside a new class followed by one or two `[TAB]`s depending on your IDE and it results in:
 
 ```
 [FunctionName(nameof(ActivityClassName))]
@@ -69,6 +69,10 @@ public async Task<OutputType> Run(
 ## Microsoft Visual Studio
 
 Download the [snippet file](/visualstudio-csharp/durablefunctions.snippet) locally and import it in Visual Studio by following [these instructions](https://docs.microsoft.com/en-us/visualstudio/ide/walkthrough-creating-a-code-snippet?view=vs-2019#import-a-code-snippet).
+
+## Microsoft Visual Studio Code
+
+
 
 ## Jetbrains Rider
 
