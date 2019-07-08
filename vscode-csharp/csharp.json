@@ -12,7 +12,7 @@
 			"\t// TODO",
 			"\t// var input = ;",
 			"\t// string instanceId = await client.StartNewAsync(",
-			"\t//    nameof(OrchestrationClassName),",
+			"\t//    nameof(OrchestratorClassName),",
 			"\t//    input);",
 			"}"
 		],

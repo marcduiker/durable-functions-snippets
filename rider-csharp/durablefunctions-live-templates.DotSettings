@@ -45,7 +45,7 @@ public async Task Run(
     // TODO
     // var input = ;
     // string instanceId = await client.StartNewAsync(
-    //    nameof(OrchestrationClassName), 
+    //    nameof(OrchestratorClassName), 
     //    input);
 }</s:String>
     <s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=D828595513AC9A46AAD55B3EF6AD3DC6/@KeyIndexDefined">True</s:Boolean>

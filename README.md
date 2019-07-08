@@ -72,7 +72,7 @@ Download the [snippet file](/visualstudio-csharp/durablefunctions.snippet) local
 
 ## Microsoft Visual Studio Code
 
-
+Until I've managed to create a proper extension you can copy & paste the [content from this file](/vscode-csharp/csharp.json) into your own User Snippets as is [documented here](https://code.visualstudio.com/docs/editor/userdefinedsnippets#_creating-your-own-snippets).
 
 ## Jetbrains Rider
 
