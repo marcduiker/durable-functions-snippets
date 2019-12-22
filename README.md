@@ -1,5 +1,5 @@
 # Durable Functions Snippets
-Visual Studio, Code & Rider C# code snippets for Durable Functions:
+Visual Studio, Code & Rider C# code snippets for Durable Functions (v2.x).
 
 ##  Create orchestration client function - `funccl`
 
@@ -8,13 +8,13 @@ Type `funccl` inside a new class followed by one or two `[TAB]`s depending on yo
 ```
 [FunctionName(nameof(OrchestrationClientClassName))]
 public async Task Run(
-    [QueueTrigger("queuename", Connection = "QueueStorageConnection")] object message,
-    [OrchestrationClient] DurableOrchestrationClientBase client,
+    [TriggerAttribute] ParameterType parameterName,
+    [DurableClient] IDurableClient client,
     ILogger logger)
 {
 
     // TODO
-    // var input = ;
+    // object input = ;
     // string instanceId = await client.StartNewAsync(
     //    nameof(OrchestrationClassName), 
     //    input);
@@ -28,7 +28,7 @@ Type `funcor` inside a new class followed by one or two `[TAB]`s depending on yo
 ```
 [FunctionName(nameof(OrchestratorClassName))]
 public async Task Run(
-    [OrchestrationTrigger] DurableOrchestrationContextBase context,
+    [OrchestrationTrigger] IDurableOrchestrationContext context,
     ILogger logger)
 {
 
@@ -39,7 +39,7 @@ public async Task Run(
     // - System.IO
     // - Thread.Sleep/Task.Delay (use context.CreateTimer instead)
     //
-    // More info: https://docs.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-checkpointing-and-replay#orchestrator-code-constraints
+    // More info: https://docs.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-code-constraints
 
     // TODO
     // var input = context.GetInput<T>();
