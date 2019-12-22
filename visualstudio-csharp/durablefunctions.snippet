@@ -19,6 +19,9 @@
           <Namespace>Microsoft.Azure.WebJobs</Namespace>
         </Import>
         <Import>
+          <Namespace>Microsoft.Azure.WebJobs.Extensions.DurableTask</Namespace>
+        </Import>
+        <Import>
           <Namespace>Microsoft.Extensions.Logging</Namespace>
         </Import>
       </Imports>
@@ -29,20 +32,30 @@
           <Default>OrchestrationClientClassName</Default>
         </Literal>
         <Literal>
-          <ID>Trigger</ID>
+          <ID>TriggerAttribute</ID>
           <ToolTip>Trigger attribute and arguments which start this function. This will require an additional Microsoft.Azure.WebJobs.Extensions.* NuGet package specific for this trigger.</ToolTip>
-          <Default>[QueueTrigger("queuename", Connection = "QueueStorageConnection")] object message</Default>
+          <Default>TriggerAttribute</Default>
+        </Literal>
+        <Literal>
+          <ID>ParameterType</ID>
+          <ToolTip>Type of the parameter that is used as input for the function.</ToolTip>
+          <Default>ParameterType</Default>
+        </Literal>
+        <Literal>
+          <ID>parameterName</ID>
+          <ToolTip>Name of the input parameter.</ToolTip>
+          <Default>parameterName</Default>
         </Literal>
       </Declarations>
       <Code Language="CSharp"><![CDATA[[FunctionName(nameof($OrchestrationClientClassName$))]
       public async Task Run(
-          $Trigger$,
-          [OrchestrationClient] DurableOrchestrationClientBase client,
+          [$TriggerAttribute$] $ParameterType$ $parameterName$,
+          [DurableClient] IDurableClient client,
           ILogger logger)
       {
           $end$
           // TODO
-          // var input = ;
+          // object input = ;
           // string instanceId = await client.StartNewAsync(
           //    nameof(OrchestratorClassName), 
           //    input);
@@ -69,6 +82,9 @@
           <Namespace>Microsoft.Azure.WebJobs</Namespace>
         </Import>
         <Import>
+          <Namespace>Microsoft.Azure.WebJobs.Extensions.DurableTask</Namespace>
+        </Import>
+        <Import>
           <Namespace>Microsoft.Extensions.Logging</Namespace>
         </Import>
       </Imports>
@@ -81,7 +97,7 @@
       </Declarations>
       <Code Language="CSharp"><![CDATA[[FunctionName(nameof($OrchestratorClassName$))]
       public async Task Run(
-          [OrchestrationTrigger] DurableOrchestrationContextBase context,
+          [OrchestrationTrigger] IDurableOrchestrationContext context,
           ILogger logger)
       {
           $end$
@@ -92,7 +108,7 @@
           // - System.IO
           // - Thread.Sleep/Task.Delay (use context.CreateTimer instead)
           //
-          // More info: https://docs.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-checkpointing-and-replay#orchestrator-code-constraints
+          // More info: https://docs.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-code-constraints
 
           // TODO
           // var input = context.GetInput<T>();
@@ -120,6 +136,9 @@
         </Import>
         <Import>
           <Namespace>Microsoft.Azure.WebJobs</Namespace>
+        </Import>
+        <Import>
+          <Namespace>Microsoft.Azure.WebJobs.Extensions.DurableTask</Namespace>
         </Import>
         <Import>
           <Namespace>Microsoft.Extensions.Logging</Namespace>
